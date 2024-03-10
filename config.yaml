@@ -1,0 +1,15 @@
+# api config
+serverPort: 8080
+httpTimeout: 10 # in seconds
+
+# logger config
+logType: text
+logLevel: debug
+
+# requirements configs
+packs:
+  - 250
+  - 500
+  - 1000
+  - 2000
+  - 5000

@@ -47,7 +47,7 @@ func (h *Handler) CalculateBestPackages(rw http.ResponseWriter, req *http.Reques
 	}
 
 	if r.Order <= 0 {
-		writeResponse(rw, 400, nil, ErrNoPackages, logger)
+		writeResponse(rw, 400, nil, ErrOrderInvalid, logger)
 		return
 	}
 

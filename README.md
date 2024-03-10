@@ -64,18 +64,19 @@ To run the built image use `docker run -p 8080:8080 retask`, you can also use an
 To build and run from docker compose use `docker-compose up -d` for the first time, subsequent times the image will simply be reused. 
 If you wish to rebuild and run `docker-compose up -d --build`
 
-### Requests and responses
+## Requests and responses
 To find all requests and responses you can simply import the postman collection in `Re-task.postman_collection.json` file. 
-
 
 
 #### ping
 url `http://localhost:8080/ping`
+
 a simple ping request, if successful it returns `pong` and status 200. 
 cURL request: `curl --location 'http://localhost:8080/ping'`
 
 ### update-package-sizes
 url `http://localhost:8080/update-package-sizes`
+
 A json POST request to update the available package sizes. This will override the initial value in config. 
 The response structure is the same as request structure but with the new values (eg. if all is correct, the request and response should look the same)
 This endpoint can throw 2 errors, both with 400 status, for invalid array of integers, either empty array or array with duplicates. 
@@ -96,6 +97,7 @@ curl --location 'http://localhost:8080/update-package-sizes' \
 
 #### calculate-best-packages
 url: `http://localhost:8080/calculate-best-packages`
+
 A json POST request to calculate the best possible package distribution given the order amount provided in request. 
 The request structure is simple json object with one field `order` representing an integer amount of ordered items. 
 The response structure is a json object with one field `packages` representing an integer array of the best possible distribution, sorted by reverse size. 

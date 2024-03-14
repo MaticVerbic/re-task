@@ -2,12 +2,14 @@ package config
 
 import (
 	"fmt"
+	"os"
+	"sort"
+	"sync"
+	"time"
+
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
-	"os"
-	"sync"
-	"time"
 )
 
 type Config struct {
@@ -94,6 +96,7 @@ func (c *Config) SetPacks(packs []int) []int {
 	defer c.lock.Unlock()
 
 	c.packs = packs
+	sort.Sort(sort.Reverse(sort.IntSlice(packs[:])))
 
 	return c.packs
 }

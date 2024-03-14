@@ -1,7 +1,6 @@
 package main
 
 import (
-	"github.com/sirupsen/logrus"
 	"os"
 	"os/signal"
 	"retask/api/handler"
@@ -9,6 +8,8 @@ import (
 	"retask/internal/packing"
 	"retask/server"
 	"syscall"
+
+	"github.com/sirupsen/logrus"
 )
 
 func main() {

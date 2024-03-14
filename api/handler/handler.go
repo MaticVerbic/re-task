@@ -3,11 +3,12 @@ package handler
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/sirupsen/logrus"
 	"io"
 	"net/http"
 	"retask/api/model"
 	"retask/config"
+
+	"github.com/sirupsen/logrus"
 )
 
 var (

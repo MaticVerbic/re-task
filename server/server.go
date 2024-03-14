@@ -3,14 +3,15 @@ package server
 import (
 	"context"
 	"fmt"
-	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
-	"github.com/pkg/errors"
-	"github.com/sirupsen/logrus"
 	"log"
 	"net/http"
 	"retask/api/handler"
 	"retask/config"
+
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
+	"github.com/pkg/errors"
+	"github.com/sirupsen/logrus"
 )
 
 // Server is an object representing a server instance, required dependencies can be added here. s

@@ -15,9 +15,9 @@ The API must be written in Golang & be usable by a HTTP API (by whichever method
 choose) and show any relevant unit tests.
 
 ### Explanation of the algorithm
-For the solution I chose the greedy algorithm, but to also be in line with rules 2. and 3. I first calculated the approximation of the smallest buckets
-Then ran the greedy algorithm, meaning removing as many packages as it will fit from the biggest to smallest. 
-In the end I also took care of the possible missing smallest package when the packages are not multiples of the smallest package. 
+Updated version of the algorithm is a recursive walkthrough of packets for each possible packet. It provides all possible
+higher than or equal combinations of packet distributions, from which we then first process out the ones with the smallest sum,
+and then find the one with the least amount of boxes. 
 
 ### Structure
 I chose the standard structure for the golang API service. 
@@ -52,6 +52,10 @@ You can run the tests with `go test ./...` or `go test -v ./...` for verbose opt
 
 I've also added a benchmark test for the algorithm which can be run using `go test -v ./internal/packing/... -bench .`
 
+If you wish to run tests in a dockerized environment, please do so by: 
+* first using `docker ps` to find out your current container name
+* then running the `docker exec <container name> <testing command>` where `testing command` is one of the above mentioned. 
+
 ### Running the service
 
 While you can also run the service simply by running `go run cmd/main.go`, Docker and docker-compose are also available
@@ -68,7 +72,7 @@ If you wish to rebuild and run `docker-compose up -d --build`
 To find all requests and responses you can simply import the postman collection in `Re-task.postman_collection.json` file. 
 
 
-#### ping
+### ping
 url `http://localhost:8080/ping`
 
 a simple ping request, if successful it returns `pong` and status 200. 

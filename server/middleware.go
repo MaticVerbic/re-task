@@ -3,11 +3,12 @@ package server
 import (
 	"context"
 	"fmt"
-	"github.com/hashicorp/go-uuid"
 	"net"
 	"net/http"
 	"strings"
 	"time"
+
+	"github.com/hashicorp/go-uuid"
 
 	"github.com/go-chi/cors"
 	"github.com/sirupsen/logrus"

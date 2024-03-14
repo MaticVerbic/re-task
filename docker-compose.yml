@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   retask:
+    image: "retask"
     build:
       context: .
       dockerfile: Dockerfile

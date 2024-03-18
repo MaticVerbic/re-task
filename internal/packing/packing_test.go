@@ -2,11 +2,10 @@ package packing
 
 import (
 	"fmt"
+	"github.com/stretchr/testify/assert"
 	"os"
 	"sort"
 	"testing"
-
-	"github.com/stretchr/testify/assert"
 )
 
 var packs = []int{250, 500, 1000, 2000, 5000}
@@ -50,8 +49,8 @@ func TestAlgorithm(t *testing.T) {
 	for i, test := range tests {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			sort.Sort(sort.Reverse(sort.IntSlice(test.packs[:])))
-			repo := &Packager{}
-			out := repo.Calculate(test.order, test.packs)
+			repo := New()
+			out := repo.Calculate(test.packs, test.order)
 			assert.Equal(t, test.expected, out)
 		})
 	}
@@ -81,9 +80,9 @@ func TestGetLeastShortest(t *testing.T) {
 func BenchmarkCalculate(b *testing.B) {
 	// we have unit tested this order to make sure the response is valid,
 	// and we're not benching invalid data.
-	testOrder := 39501
+	testOrder := 500000
 	repo := &Packager{}
 	for n := 0; n < b.N; n++ {
-		repo.Calculate(testOrder, packs)
+		repo.Calculate(packs, testOrder)
 	}
 }

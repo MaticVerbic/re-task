@@ -15,9 +15,21 @@ The API must be written in Golang & be usable by a HTTP API (by whichever method
 choose) and show any relevant unit tests.
 
 ### Explanation of the algorithm
-Updated version of the algorithm is a recursive walkthrough of packets for each possible packet. It provides all possible
-higher than or equal combinations of packet distributions, from which we then first process out the ones with the smallest sum,
-and then find the one with the least amount of boxes. 
+~~Updated version of the algorithm is a recursive walkthrough of packets for each possible packet. It provides all possible~~
+~~higher than or equal combinations of packet distributions, from which we then first process out the ones with the smallest sum,~~
+~~and then find the one with the least amount of boxes.~~ 
+
+Latest version of the algorithm re-implements the algorithm in order to speed it up. Previous solution, while working was slow at large
+orders, especially when provided with small packets, the maximum optimization possible would be to reduce the order by the amount of largest boxes
+and then work with the remainder. 
+
+New solution implements bottom up, tabulated dynamic programming approach, using a backwards lookup memoization, in order to not need to calculate the
+cartesian product of the prevous array and new array (e.g. producing a large matrix sizes, which often don't add up to the target sum). 
+The optimization to the previous algorithm also happens when selecting the smallest difference to the target with the shortest length solution,
+which now happens directly in the generation loop, reducing the memory consumption, complexity and improving readability. 
+
+Other changes can be read in either the code comments or the changelog (commit message). 
+
 
 ### Structure
 I chose the standard structure for the golang API service. 

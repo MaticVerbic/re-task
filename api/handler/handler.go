@@ -19,7 +19,7 @@ var (
 )
 
 type PackagingRepo interface {
-	Calculate(int, []int) []int
+	Calculate([]int, int) []int
 }
 
 type Handler struct {
@@ -52,7 +52,7 @@ func (h *Handler) CalculateBestPackages(rw http.ResponseWriter, req *http.Reques
 		return
 	}
 
-	packs := h.packageRepo.Calculate(r.Order, h.conf.GetPacks())
+	packs := h.packageRepo.Calculate(h.conf.GetPacks(), r.Order)
 
 	res := &model.CalculateBestPackagesResponse{
 		Packages: packs,

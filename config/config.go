@@ -96,7 +96,7 @@ func (c *Config) SetPacks(packs []int) []int {
 	defer c.lock.Unlock()
 
 	c.packs = packs
-	sort.Sort(sort.Reverse(sort.IntSlice(packs[:])))
+	sort.Ints(c.packs)
 
 	return c.packs
 }
